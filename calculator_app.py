@@ -1,7 +1,10 @@
+from webbrowser import get
+
+
 logo = """
  _____________________
 |  _________________  |
-| | Pythoni {num1}. | |  .----------------.  .----------------.  .----------------.  .----------------. 
+| | Pythonista   0. | |  .----------------.  .----------------.  .----------------.  .----------------. 
 | |_________________| | | .--------------. || .--------------. || .--------------. || .--------------. |
 |  ___ ___ ___   ___  | | |     ______   | || |      __      | || |   _____      | || |     ______   | |
 | | 7 | 8 | 9 | | + | | | |   .' ___  |  | || |     /  \     | || |  |_   _|     | || |   .' ___  |  | |
@@ -26,11 +29,47 @@ def multiply(num1, num2):
 def divide(num1, num2):
   return num1 / num2
 
+
+
 operations = {"+": add, "-": subract, "*": multiply, "/": divide}
 print(logo)
 num1 = int(input("What's the first number? "))
-for symbol in operations:
-  print(symbol)
-function = input("What math function would you like to perform?")
+
+def check_if_keep_going():
+  keep_going = input("'C' to continue, 'S' to stop  ").upper()
+  if keep_going == 'S':
+    print("Thank you for using the calculator")
+  elif keep_going == 'C':
+    choose_operator()
+    num1 = answer
+    num2 = int(input("What is the next number?  "))
+    get_solution(num1, num2, functi_n)
+  else:
+    print("invalid response. Try again")
+    check_if_keep_going()
+
+    
+
+def choose_operator():
+  global functi_n
+  for symbol in operations:
+    print(symbol)
+  functi_n = input("What math function would you like to perform? ")
+  
+
+choose_operator()
+
 num2 = int(input("What's the second number? "))
-print(f" {num1} {function} {num2} = {operations[function](num1, num2)}") 
+
+
+def get_solution(num1, num2, functi_n):
+  global solution
+  global answer
+  answer = operations[functi_n](num1, num2)
+  solution = (f" {num1} {functi_n} {num2} = {answer}") 
+  print(solution)
+  check_if_keep_going()
+
+get_solution(num1, num2, functi_n)
+
+  
